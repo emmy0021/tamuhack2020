@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html land ="en-us">
+<html land="en-us">
 
 <head>
     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <style>
         /* Always set the map height explicitly to define the size of the div
@@ -26,9 +26,9 @@
 </head>
 
 <body>
-    
+
     <div id="floating-panel">
-        <input type="text" id = "inputtext" placeholder = "City" value = "">
+        <input type="text" id="inputtext" placeholder="City" value="">
         <button onclick="toggleHeatmap()">Toggle Heatmap</button>
         <button onclick="changeGradient()">Change gradient</button>
         <p id="lon"></p>
@@ -50,10 +50,13 @@
                     lng: -122.434
                 },
                 zoom: 13,
-                mapTypeId: 'satellite'
+                mapTypeId: 'satellite',
+                gestureHandling: 'cooperative'
+
             };
 
             map = new google.maps.Map(document.getElementById("map"), mapProp);
+
 
 
             heatmap = new google.maps.visualization.HeatmapLayer({
@@ -78,7 +81,19 @@
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][0], locations[i][1]),
                     map: map,
-                    icon : icons[locations[i][2]].icon
+                    icon: icons[locations[i][2]].icon
+                });
+            }
+
+            map.addListener('rightclick', function (e) {
+                console.log(e.latlng, map);
+                placeMarker(e.LatLng, map);
+            });
+
+            function placeMarker(location, map) {
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map
                 });
             }
         }
@@ -622,6 +637,34 @@
 
     <script src="location.js" type="text/javascript"></script>
 
+
+
+     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-analytics.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+
+
+    <script>
+        // Your web app’s Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCp__3sbc1Bj2B0h7Owyn_6KYH79XqkzC0",
+            authDomain: "tamuhack2020 - 69538. firebaseapp.com",
+            databaseURL: "https: //tamuhack2020-69538.firebaseio.com",
+            projectId: "tamuhack2020 - 69538 ",
+            storageBucket: "tamuhack2020 - 69538. appspot.com",
+            messagingSenderId: "489082793913 ",
+            appId: "1: 489082793913: web: 918e698329 f4482a1f1068",
+            measurementId: "G - SBWE9WF6DT"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
 </body>
 
 </html>

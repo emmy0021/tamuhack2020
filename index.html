@@ -2,6 +2,7 @@
 <html land ="en-us">
 
 <head>
+    <link rel="stylesheet" href="style.css" type="text/css">
     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
@@ -31,10 +32,14 @@
         <input type="text" id = "inputtext" placeholder = "City" value = "">
         <button onclick="toggleHeatmap()">Toggle Heatmap</button>
         <button onclick="changeGradient()">Change gradient</button>
-        <button onclick="reportFire()">Report Fire</button>
+        <button id = "rep" onclick="reportFire()">Report Fire</button>
     </div>
-    <div id="report"></div>
-    <div id="geoloc"></div>
+    <div id="confirm">Allow access to your geolocation?</div>
+    <div id="geoloc">
+        <button id = "y">Yes</button>
+        <button id = "n">No</button>
+
+    </div>
     <div id="map"></div>
 
     <script>

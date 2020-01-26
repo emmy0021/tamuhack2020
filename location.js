@@ -62,25 +62,4 @@ function gotData(data) {
 }
 
 // Your web app's Firebase configuration
-var firebaseConfig = {
-    apiKey: "AIzaSyCp__3sbc1Bj2B0h7Owyn_6KYH79XqkzC0",
-    authDomain: "tamuhack2020-69538.firebaseapp.com",
-    databaseURL: "https://tamuhack2020-69538.firebaseio.com",
-    projectId: "tamuhack2020-69538",
-    storageBucket: "tamuhack2020-69538.appspot.com",
-    messagingSenderId: "489082793913",
-    appId: "1:489082793913:web:918e698329f4482a1f1068",
-    measurementId: "G-SBWE9WF6DT"
-  };
-  // Initialize Firebase
 
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-
-  function writeData(){
-      firebase.database().ref("coord").set({
-          Latitude: lat,
-          Longitude: lon,
-          Temperature: temp
-      })
-  }

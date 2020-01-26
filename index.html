@@ -11,7 +11,7 @@
         /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
         #map {
-            height: 100%;
+            height: 91%;
             width: 100%;
         }
 
@@ -22,6 +22,11 @@
             width: 100%;
             margin: 0;
             padding: 0;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
 
         marquee {
@@ -47,18 +52,20 @@
             cursor: pointer;
             border-radius: 4px;
             position: absolute;
-            z-index:99;
+            z-index: 99;
         }
     </style>
 </head>
 
 <body>
     <div id="floating-panel">
-        <input type="text" id="inputtext" placeholder="City" value=""class="button" style="position:absolute;left: 190px;top: 68px;z-index:99;">
+        <input type="text" id="inputtext" placeholder="City" value="" class="button"
+            style="position:absolute;left: 190px;top: 68px;z-index:99;">
         <button id="submit" class="button" style="left: 10px;top: 150px;">Enable Location</button>
         <button id="get" class="button" style="left: 10px;top: 200px;">Determine Risk</button>
-        <button onclick="toggleHeatmap()"class="button" style="visibility: hidden;left: 10px;top: 250px;">Toggle Heatmap</button>
-        <button onclick="changeGradient()"class="button" style="left: 10px;top: 250px;">Change gradient</button>
+        <button onclick="toggleHeatmap()" class="button" style="visibility: hidden;left: 10px;top: 250px;">Toggle
+            Heatmap</button>
+        <button onclick="changeGradient()" class="button" style="left: 10px;top: 250px;">Change gradient</button>
         <p id="lon" style="visibility: hidden; position: absolute;left: 10px;top: 0px;"></p>
         <p id="lat" style="visibility: hidden; position: absolute;left: 10px;top: 0px;"></p>
     </div>

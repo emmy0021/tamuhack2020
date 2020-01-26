@@ -3,6 +3,7 @@ var ip = 'check';
 var city = '';
 var lon = '';
 var lat = '';
+var temp;
 
 var weather;
 var api = 'https://api.openweathermap.org/data/2.5/weather?';
@@ -45,7 +46,8 @@ function setup() {
 	createCanvas(400, 200);
 	var button = select('#submit');
     button.mousePressed(weatherAsk);
-    button.mousePressed(writeData);
+    var get = select('#get');
+    get.mousePressed(getData);
 }
 
 function weatherAsk() {
@@ -58,11 +60,15 @@ function weatherAsk() {
 }
 function gotData(data) {
     weather = data;
-    console.log(weather.main.temp);
+    temp =weather.main.temp;
+    console.log(temp);
+    writeData();
 }
 
-// Your web app's Firebase configuration
-var firebaseConfig = {
+
+  // Initialize Firebase
+
+  firebase.initializeApp({
     apiKey: "AIzaSyCp__3sbc1Bj2B0h7Owyn_6KYH79XqkzC0",
     authDomain: "tamuhack2020-69538.firebaseapp.com",
     databaseURL: "https://tamuhack2020-69538.firebaseio.com",
@@ -71,10 +77,7 @@ var firebaseConfig = {
     messagingSenderId: "489082793913",
     appId: "1:489082793913:web:918e698329f4482a1f1068",
     measurementId: "G-SBWE9WF6DT"
-  };
-  // Initialize Firebase
-
-  firebase.initializeApp(firebaseConfig);
+  });
   firebase.analytics();
 
   function writeData(){
@@ -83,4 +86,14 @@ var firebaseConfig = {
           Longitude: lon,
           Temperature: temp
       })
+  }
+
+  function getData(){
+    firebase.database().ref('/').once('value',function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+           var childKey =  childSnapshot.key;
+           var childData = childSnapshot.val();
+           console.log(childData);
+        });
+    })
   }

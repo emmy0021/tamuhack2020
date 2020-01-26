@@ -5,6 +5,8 @@ var lon = '';
 var lat = '';
 var temp;
 var heatmap, map;
+var marker;
+var tlat,tlon;
 
 var weather;
 var api = 'https://api.openweathermap.org/data/2.5/weather?';
@@ -45,17 +47,20 @@ function outputCity() {
 
 ///weather
 function setup() {
+
     createCanvas(400, 200);
     var button = select('#submit');
     button.mousePressed(weatherAsk);
+    // button.mousePressed();
     var get = select('#get');
     get.mousePressed(getData);
 }
 
 function weatherAsk() {
-    var latitude = 'lat=' + lat;
-
-    var longitude = '&lon=' + lon;
+    tlat = -((Math.random() * 8) + 26);
+    tlon = ((Math.random() * 45) + 113);
+    var latitude = 'lat=' + String(tlat);
+    var longitude = '&lon=' + String(tlon);
     var url = api + latitude + longitude + apiKey;
 
     loadJSON(url, gotData);
@@ -81,17 +86,17 @@ firebase.initializeApp({
     appId: "1:489082793913:web:918e698329f4482a1f1068",
     measurementId: "G-SBWE9WF6DT"
 });
-firebase.analytics();
+// firebase.analytics();
 
 function writeData() {
-    var tlat = ((Math.random() * 15) + 30);
-    var tlon = ((Math.random() * 30) + 140);
+
     firebase.database().ref("coord").set({
         Latitude: tlat,
         Longitude: tlon,
-        Temperature: ((Math.random() * 170) + 300)
+        Temperature: temp
     })
-    mapMe(tlon,tlat);
+
+    // weatherAsk();
 }
 
 function getData() {
@@ -149,7 +154,7 @@ function myMap() {
 
 
 function placeMarker(location, map) {
-    var marker = new google.maps.Marker({
+    marker = new google.maps.Marker({
         position: location,
         map: map
     });
@@ -157,7 +162,7 @@ function placeMarker(location, map) {
 
 function mapMe(lo,la){
 
-    var marker = new google.maps.Marker({
+    marker = new google.maps.Marker({
         position: new google.maps.LatLng(la, lo),
         map: map,
     });
@@ -199,8 +204,8 @@ $('button#submit').click(function () {
             var stringified = JSON.stringify(response);
             var parsedObj = JSON.parse(stringified);
 
-            console.log(parsedObj.lat);
-            console.log(parsedObj.long);
+            // console.log(parsedObj.lat);
+            // console.log(parsedObj.long);
 
 
             for (var i = 100; i < 36011; i++) {
@@ -224,6 +229,7 @@ $('button#submit').click(function () {
                 data: getPointsTwo(),
                 map: map
             });
+            mapMe(tlon,tlat)
         }
     });
 });

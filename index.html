@@ -23,6 +23,7 @@
     <div id="floating-panel">
         <input type="text" id="inputtext" placeholder="City" value="">
         <button id="submit">submit</button>
+        <button id="get">get</button>
         <button onclick="toggleHeatmap()">Toggle Heatmap</button>
         <button onclick="changeGradient()">Change gradient</button>
         <button id = "rep" onclick="reportFire()">Report Fire</button>
@@ -48,7 +49,7 @@
 
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/addons/p5.sound.min.js"></script>
-    <script src="location.js" type="text/javascript"></script>
+    
     
 
 
@@ -57,6 +58,12 @@
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase.js"></script>
+
+    <script src="location.js" type="text/javascript"></script>
+
+    
+    
 </body>
 
 </html>

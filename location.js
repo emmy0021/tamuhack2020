@@ -84,12 +84,14 @@ firebase.initializeApp({
 firebase.analytics();
 
 function writeData() {
+    var tlat = ((Math.random() * 15) + 30);
+    var tlon = ((Math.random() * 30) + 140);
     firebase.database().ref("coord").set({
-        Latitude: ((Math.random() * 15) + 30),
-        Longitude: ((Math.random() * 30) + 140),
+        Latitude: tlat,
+        Longitude: tlon,
         Temperature: ((Math.random() * 170) + 300)
     })
-    // mapMe();
+    mapMe(tlon,tlat);
 }
 
 function getData() {
@@ -153,10 +155,10 @@ function placeMarker(location, map) {
     });
 }
 
-function mapMe(){
+function mapMe(lo,la){
 
     var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(lat, lon),
+        position: new google.maps.LatLng(la, lo),
         map: map,
     });
 }

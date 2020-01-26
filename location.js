@@ -93,8 +93,11 @@ function gotData(data) {
         snapshot.forEach(function(childSnapshot){
            var childKey =  childSnapshot.key;
            var childData = childSnapshot.val();
-           console.log(childData);
+           console.log(childData['Risk Level']);
+           var txt = "City: " + JSON.stringify(city) + "\nLatitude: " + JSON.stringify(lat) + "\nCity: " + JSON.stringify(lon) + "\nRisk Level: " +  JSON.stringify(childData['Risk Level']) + "\nTemperature: " +  JSON.stringify(temp) + "K";
+           alert(txt);
         });
+
     })
   }
 

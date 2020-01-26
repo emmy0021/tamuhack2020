@@ -25,7 +25,7 @@ def ret_data():
     x_pred['lat'] = [result['Latitude']]
     x_pred['temp'] = [result['Temperature']]
 
-    classes = {1:'low risk', 2:'mild risk',3:'high risk'}
+    classes = {1:'Low Risk', 2:'Mild Risk',3:'High Risk'}
     knn = pickle.load(open('finalized_model.sav', 'rb'))
     y_pred = knn.predict(x_pred)
 

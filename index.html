@@ -2,26 +2,13 @@
 <html land="en-us">
 
 <head>
+    <link rel="stylesheet" href="style.css" type="text/css">
     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <style>
-        /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-        #map {
-            height: 100%;
-            width: 100%;
-        }
-
-        /* Optional: Makes the sample page fill the window. */
-        html,
-        body {
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
+       
     </style>
 
     
@@ -31,7 +18,7 @@
 
 <body>
 
-
+    <h1 id=title>FIREWATCH</h1>
 
     <div id="floating-panel">
         <input type="text" id="inputtext" placeholder="City" value="">
@@ -39,11 +26,13 @@
         <button id="get">get</button>
         <button onclick="toggleHeatmap()">Toggle Heatmap</button>
         <button onclick="changeGradient()">Change gradient</button>
-        <p id="lon"></p>
-        <p id="lat"></p>
+        <button id = "rep" onclick="reportFire()">Report Fire</button>
     </div>
-
-    <marquee behavior="scroll" direction="left" scrollamount="1">Very slow...</marquee>
+    <div id="confirm">Allow access to your geolocation?</div>
+    <div id="geoloc">
+        <button id = "y">Yes</button>
+        <button id = "n">No</button>
+    </div>
     <div id="map"></div>
 
     <script src="map.js"></script>
@@ -52,6 +41,7 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDutuTXuuUC-5ywb9P6j4OOs7u_sliwfwM&libraries=visualization&callback=myMap">
     </script>
 
+    <script src="report.js" type="text/javascript"></script>
     <p>working</p>
 
 

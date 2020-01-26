@@ -1,4 +1,4 @@
-var Heatmap, map;
+var heatmap, map;
 
         function myMap() {
 

@@ -5,6 +5,7 @@
     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" src="news.js"></script>
     <meta charset="UTF-8">
     <style>
         /* Always set the map height explicitly to define the size of the div
@@ -22,13 +23,18 @@
             margin: 0;
             padding: 0;
         }
+        marquee {
+		    font-size: 14pt;
+		}
+        p.t1 {
+            font-size: 14pt;
+            background-color: #ff8080;
+            white-space: nowrap;
+        }
     </style>
 </head>
 
 <body>
-
-
-
     <div id="floating-panel">
         <input type="text" id="inputtext" placeholder="City" value="">
         <button id="submit">Enable Location</button>
@@ -39,7 +45,10 @@
         <p id="lat"></p>
     </div>
 
-    <marquee behavior="scroll" direction="left" scrollamount="1">Very slow...</marquee>
+    <!-- <marquee behavior="scroll" direction="left" scrollamount="1">Very slow...</marquee> -->
+    <p class="t1">Breaking News: <marquee behavior="scroll" direction="left"
+               onmouseover="this.stop();"
+               onmouseout="this.start();" id='news' > </marquee> </p>
     <div id="map"></div>
 
     <script src="map.js"></script>

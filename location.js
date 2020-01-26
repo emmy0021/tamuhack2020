@@ -85,10 +85,11 @@ firebase.analytics();
 
 function writeData() {
     firebase.database().ref("coord").set({
-        Latitude: lat,
-        Longitude: lon,
-        Temperature: temp
+        Latitude: ((Math.random() * 15) + 30),
+        Longitude: ((Math.random() * 30) + 140),
+        Temperature: ((Math.random() * 170) + 300)
     })
+    // mapMe();
 }
 
 function getData() {
@@ -97,7 +98,7 @@ function getData() {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
             console.log(childData['Risk Level']);
-            var txt = "City: " + JSON.stringify(city) + "\nLatitude: " + JSON.stringify(lat) + "\nCity: " + JSON.stringify(lon) + "\nRisk Level: " + JSON.stringify(childData['Risk Level']) + "\nTemperature: " + JSON.stringify(temp) + "K";
+            var txt = "City: " + JSON.stringify('Somewhere in Australia') + "\nLatitude: " + JSON.stringify(childData['Latitude']) + "\nCity: " + JSON.stringify(childData['Longitude']) + "\nRisk Level: " + JSON.stringify(childData['Risk Level']) + "\nTemperature: " + JSON.stringify(childData['Temperature']) + "K";
             alert(txt);
         });
 

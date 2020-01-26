@@ -155,6 +155,16 @@ function placeMarker(location, map) {
     });
 }
 
+function reportFire(){
+    document.getElementById("report").style.visibility = "hidden";
+    document.getElementById("confirm").style.visibility = "visible";
+}
+
+function confirmFire(){
+    document.getElementById("report").style.visibility = "visible";
+    document.getElementById("confirm").style.visibility = "hidden";
+}
+
 function mapMe(lo,la){
 
     var marker = new google.maps.Marker({

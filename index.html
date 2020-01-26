@@ -64,12 +64,14 @@
 <body>
     <div id="floating-panel">
         <input type="text" id="inputtext" placeholder="City" value="" class="button"
-            style="position:absolute;left: 190px;top: 26px;z-index:99;">
+            style="position:absolute;left: 190px;top: 33px;z-index:99;">
         <button id="submit" class="button" style="left: 10px;top: 115px;">Enable Location</button>
         <button id="get" class="button" style="left: 10px;top: 165px;">Determine Risk</button>
         <button onclick="toggleHeatmap()" class="button" style="visibility: hidden;left: 10px;top: 250px;">Toggle
             Heatmap</button>
         <button onclick="changeGradient()" class="button" style="left: 10px;top: 215px;">Change gradient</button>
+        <button onclick="reportFire()" id="report" class = "button" style="right:55px;top:33px">Report Fire</button>
+        <button onclick="confirmFire()" id="confirm" class = "button" id = "confirm" style="visibility: hidden;right:55px;top:33px">Confirm Fire</button>
         <p id="lon" style="visibility: hidden; position: absolute;left: 10px;top: 0px;"></p>
         <p id="lat" style="visibility: hidden; position: absolute;left: 10px;top: 0px;"></p>
     </div>

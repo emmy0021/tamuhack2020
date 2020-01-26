@@ -35,8 +35,8 @@
         <button id="get">Determine Risk</button>
         <button onclick="toggleHeatmap()">Toggle Heatmap</button>
         <button onclick="changeGradient()">Change gradient</button>
-        <p id="lon"></p>
-        <p id="lat"></p>
+        <p id="lon" style="visibility: hidden; position: absolute;left: 0px;top: 0px;"></p>
+        <p id="lat" style="visibility: hidden; position: absolute;left: 0px;top: 0px;"></p>
     </div>
 
     <marquee behavior="scroll" direction="left" scrollamount="1">Very slow...</marquee>
@@ -47,8 +47,6 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDutuTXuuUC-5ywb9P6j4OOs7u_sliwfwM&libraries=visualization&callback=myMap">
     </script>
-
-    <p>working</p>
 
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.min.js"></script>
